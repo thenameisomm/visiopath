@@ -1,0 +1,13 @@
+# Python bytecode files
+*.pyc
+__pycache__/
+
+# Virtual environment folders
+env/
+.env/
+
+# Data folder (if you don't want to track large datasets)
+data/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
