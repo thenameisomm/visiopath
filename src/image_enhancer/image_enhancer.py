@@ -1,47 +1,80 @@
-import cv2
-import numpy as np
+import os
+import requests
+import base64
+from flask import request, jsonify, send_from_directory
+from dotenv import load_dotenv
 
-def enhance_image(image_path):
-    # Read the image
-    image = cv2.imread(image_path)
-    if image is None:
-        print("Error: Image not found!")
-        return None
+# ✅ Load API Key
+env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".env"))
+load_dotenv(env_path)
 
-    # Example Enhancement 1: Adjust Contrast using Histogram Equalization
-    # Convert the image to Lab color space (better for contrast enhancement)
-    lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+API_KEY = os.getenv("IMGGEN_API_KEY")
 
-    # Split the LAB image into L, A, B channels
-    l, a, b = cv2.split(lab_image)
+# ✅ Debug: Print API Key
+print("🔑 API Key Loaded:", API_KEY)
 
-    # Apply Histogram Equalization on the L channel (luminance)
-    enhanced_l = cv2.equalizeHist(l)
+if not API_KEY:
+    print("❌ ERROR: API Key missing. Check .env file!")
+    exit()
 
-    # Merge the enhanced L channel back with the original A and B channels
-    enhanced_lab_image = cv2.merge((enhanced_l, a, b))
+# ✅ Define API Endpoint for Upscaling
+IMGGEN_UPSCALE_URL = "https://app.imggen.ai/v1/upscale-image"
 
-    # Convert the image back to BGR color space
-    enhanced_image = cv2.cvtColor(enhanced_lab_image, cv2.COLOR_LAB2BGR)
+# ✅ Define Upload & Download Folders
+UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
+PROCESSED_FOLDER = os.path.join(os.path.dirname(__file__), 'processed')  # ✅ New folder for processed images
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(PROCESSED_FOLDER, exist_ok=True)
 
-    # Example Enhancement 2: Sharpen the Image
-    # Define a kernel for sharpening
-    kernel = np.array([[0, -1, 0],
-                       [-1, 5,-1],
-                       [0, -1, 0]])
+# ✅ Process Image Enhancement & Enable Download
+def process_image_enhancement():
+    if 'file' not in request.files:
+        return jsonify({"error": "No file uploaded"}), 400
 
-    sharpened_image = cv2.filter2D(enhanced_image, -1, kernel)
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
 
-    # Return the enhanced image
-    return sharpened_image
+    # ✅ Save Uploaded File
+    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(file_path)
 
-# Test the function
-if __name__ == "__main__":
-    # Replace with your image path
-    enhanced_img = enhance_image('plant-grass-flower-selected-focus-blur-background-little-bit-green-patel-wild-park-330026275.webp')
-    
-    if enhanced_img is not None:
-        # Show the enhanced image
-        cv2.imshow("Enhanced Image", enhanced_img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    # ✅ Send Image to ImgGen API
+    with open(file_path, "rb") as image_file:
+        response = requests.post(
+            IMGGEN_UPSCALE_URL,
+            files={"image": image_file},
+            headers={"X-IMGGEN-KEY": API_KEY}
+        )
+
+    # ✅ Debug: Print API Response
+    print("📡 API Response Code:", response.status_code)
+    print("📡 API Response Body:", response.text)
+
+    # ✅ Check API Response
+    if response.status_code == 200:
+        result = response.json()
+
+        if result.get("success"):
+            # ✅ Convert Base64 Image to File
+            enhanced_image_base64 = result.get("image")  # Base64-encoded image
+            enhanced_image_filename = f"enhanced_{file.filename}"
+            enhanced_image_path = os.path.join(PROCESSED_FOLDER, enhanced_image_filename)
+
+            with open(enhanced_image_path, "wb") as f:
+                f.write(base64.b64decode(enhanced_image_base64))
+
+            print(f"✅ Image saved at: {enhanced_image_path}")
+
+            # ✅ Provide Download Link
+            return jsonify({
+                "download_url": f"/download_enhanced/{enhanced_image_filename}"
+            }), 200
+        else:
+            return jsonify({"error": "Image processing failed!"}), 500
+    else:
+        return jsonify({"error": f"API Request Failed! {response.text}"}), 500
+
+# ✅ Route for Downloading the Enhanced Image
+def download_enhanced_image(filename):
+    return send_from_directory(PROCESSED_FOLDER, filename, as_attachment=True)

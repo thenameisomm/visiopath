@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISIOPATH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('https://source.unsplash.com/1600x900/?technology,abstract') no-repeat center center/cover;
+            color: #e0e0e0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 153, 255, 0.2), rgba(153, 0, 255, 0.2));
+            z-index: 0;
+            animation: gradientFlow 20s infinite;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/neural-network.png') repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            background: rgba(10, 20, 40, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 153, 255, 0.3);
+        }
+
+        nav .logo {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #0099ff, #cc00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            font-family: 'Exo 2', sans-serif;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0099ff;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #0099ff;
+            text-shadow: 0 0 12px rgba(0, 153, 255, 0.7);
+        }
+
+        .container {
+            margin: 140px auto 60px;
+            background: rgba(10, 20, 40, 0.9);
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 153, 255, 0.3), 0 0 80px rgba(153, 0, 255, 0.2);
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Hero Section */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .main-logo {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #0099ff, #cc00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 153, 255, 0.7);
+            letter-spacing: 4px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, #0099ff, #cc00ff);
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0, 153, 255, 0.7);
+        }
+
+        .platform-description {
+            font-size: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            color: #b0c4de;
+        }
+
+        .modules-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .module-card {
+            background: rgba(20, 40, 80, 0.6);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 153, 255, 0.2);
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 153, 255, 0.4);
+            background: rgba(20, 40, 80, 0.8);
+        }
+
+        .module-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .module-title {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #0099ff;
+        }
+
+        .module-description {
+            font-size: 1.1rem;
+            color: #b0c4de;
+        }
+
+        /* Existing Demo Sections */
+        .demo-section {
+            margin: 80px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .demo-title {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0099ff;
+            text-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .demo-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #0099ff, #cc00ff);
+            border-radius: 3px;
+        }
+
+        .demo-info {
+            font-size: 1.3rem;
+            color: #b0c4de;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .demo-container {
+            position: relative;
+            width: 384px;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 153, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .demo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .enhancer-image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: filter 0.5s ease;
+        }
+
+        .enhancer-clear {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0099ff, #cc00ff);
+            cursor: ew-resize;
+            z-index: 5;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(0, 153, 255, 0.8);
+        }
+
+        .slider:hover {
+            box-shadow: 0 0 25px rgba(0, 153, 255, 1);
+        }
+
+        .text-demo {
+            background: rgba(10, 20, 40, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .text-demo:hover {
+            transform: scale(1.02);
+        }
+
+        .text-demo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 153, 255, 0.2), transparent);
+            animation: scan 3s infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .text-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(20, 40, 80, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 153, 255, 0.2);
+        }
+
+        .text-content p {
+            font-size: 1.3rem;
+            margin: 15px 0;
+            color: #e0e0e0;
+        }
+
+        .image-gen-demo {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: rgba(10, 20, 40, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .image-gen-demo:hover {
+            transform: scale(1.02);
+        }
+
+        .gen-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(153, 0, 255, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gen-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(153, 0, 255, 0.8);
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #0099ff, #cc00ff);
+            color: white;
+            text-decoration: none;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.4rem;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 153, 255, 0.5);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 40px rgba(153, 0, 255, 0.7);
+        }
+
+        .btn span {
+            margin-right: 12px;
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .main-logo {
+                font-size: 3rem;
+            }
+            
+            .platform-description {
+                font-size: 1.2rem;
+            }
+            
+            .module-card {
+                width: 100%;
+            }
+            
+            .container {
+                padding: 30px;
+            }
+            
+            .demo-title {
+                font-size: 2rem;
+            }
+            
+            .demo-info {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">VISIOPATH</div>
+        <ul>
+            <li><a href="{{ url_for('text_reconstruction') }}">Text Reconstruction</a></li>
+            <li><a href="{{ url_for('image_enhancer') }}">Image Enhancer</a></li>
+            <li><a href="{{ url_for('text_to_image') }}">Text to Image</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- New Hero Section -->
+        <section class="hero-section">
+            <div class="logo-container">
+                <div class="main-logo">VISIOPATH</div>
+            </div>
+            
+            <p class="platform-description">
+                VISIOPATH is an advanced AI platform that transforms your visual content through three powerful modules. 
+                Enhance images, reconstruct text, and generate stunning visuals - all with cutting-edge artificial intelligence.
+            </p>
+            
+            <div class="modules-container">
+                <div class="module-card">
+                    <div class="module-icon">📸</div>
+                    <h3 class="module-title">Image Enhancer</h3>
+                    <p class="module-description">Transform blurry images into crystal-clear high-resolution visuals with our advanced enhancement technology.</p>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-icon">📝</div>
+                    <h3 class="module-title">Text Reconstruction</h3>
+                    <p class="module-description">Revive damaged or obscured documents with AI that intelligently reconstructs missing text.</p>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-icon">🎨</div>
+                    <h3 class="module-title">Text to Image</h3>
+                    <p class="module-description">Generate unique, creative visuals from simple text descriptions with our generative AI.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Enhancer Demo Section -->
+        <div class="demo-section">
+            <h2 class="demo-title">Image Enhancement Showcase</h2>
+            <p class="demo-info">Witness the power of our AI as it transforms low-quality images into stunning high-definition visuals. Slide to compare before and after results.</p>
+
+            <div class="demo-container">
+                <div class="enhancer-image" style="background: url('https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/1-1.jpg') no-repeat center/cover;"></div>
+                <div class="enhancer-clear" style="background: url('https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/1.jpg') no-repeat center/cover;"></div>
+                <div class="slider" id="slider1"></div>
+            </div>
+
+            <div class="demo-container">
+                <div class="enhancer-image" style="background: url('https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/2-1.jpg') no-repeat center/cover;"></div>
+                <div class="enhancer-clear" style="background: url('https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/2.jpg') no-repeat center/cover;"></div>
+                <div class="slider" id="slider2"></div>
+            </div>
+        </div>
+
+        <!-- Text Reconstruction Demo -->
+        <div class="demo-section">
+            <h2 class="demo-title">Text Reconstruction Demo</h2>
+            <p class="demo-info">Our AI can intelligently reconstruct text from damaged or obscured documents, preserving the original meaning and context.</p>
+            
+            <div class="text-demo">
+                <div class="text-content">
+                    <p>Original: "Brkn txt wth mssng ltrs n ndcphrbl cntnt"</p>
+                    <p>Reconstructed: "Broken text with missing letters in indecipherable content"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text-to-Image Demo -->
+        <div class="demo-section">
+            <h2 class="demo-title">Text to Image Generation</h2>
+            <p class="demo-info">Turn your creative ideas into visual reality. Describe what you imagine, and our AI will generate unique images based on your description.</p>
+            
+            <div class="image-gen-demo">
+                <div class="gen-image" style="background-image: url('/static/images/img1.jpeg')"></div>
+                <div class="gen-image" style="background-image: url('/static/images/img2.jpeg')"></div>
+                <div class="gen-image" style="background-image: url('/static/images/img3.jpeg')"></div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="{{ url_for('text_reconstruction') }}" class="btn">
+                <span>📝</span>
+                <span>Try Text Reconstruction</span>
+            </a>
+            <a href="{{ url_for('image_enhancer') }}" class="btn">
+                <span>📸</span>
+                <span>Try Image Enhancer</span>
+            </a>
+            <a href="{{ url_for('text_to_image') }}" class="btn">
+                <span>🎨</span>
+                <span>Try Text to Image</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Slider functionality for both sliders
+        function initSlider(sliderId) {
+            const slider = document.getElementById(sliderId);
+            const enhancerClear = slider.parentElement.querySelector('.enhancer-clear');
+            let isDragging = false;
+
+            slider.addEventListener('mousedown', () => isDragging = true);
+            document.addEventListener('mouseup', () => isDragging = false);
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const container = slider.parentElement;
+                    const rect = container.getBoundingClientRect();
+                    let x = e.clientX - rect.left;
+                    
+                    x = Math.max(0, Math.min(x, rect.width));
+                    slider.style.left = `${x}px`;
+                    enhancerClear.style.clipPath = `inset(0 ${rect.width - x}px 0 0)`;
+                }
+            });
+
+            slider.addEventListener('touchstart', () => isDragging = true);
+            document.addEventListener('touchend', () => isDragging = false);
+
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    const container = slider.parentElement;
+                    const rect = container.getBoundingClientRect();
+                    let x = e.touches[0].clientX - rect.left;
+                    
+                    x = Math.max(0, Math.min(x, rect.width));
+                    slider.style.left = `${x}px`;
+                    enhancerClear.style.clipPath = `inset(0 ${rect.width - x}px 0 0)`;
+                }
+            });
+        }
+
+        // Initialize both sliders
+        initSlider('slider1');
+        initSlider('slider2');
+    </script>
+</body>
+</html>

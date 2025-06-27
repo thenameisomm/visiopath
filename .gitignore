@@ -1,13 +1,40 @@
-# Python bytecode files
-*.pyc
-__pycache__/
+# System and IDE files
+.DS_Store
+.vscode/
 
-# Virtual environment folders
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
 env/
+venv/
+.venv/
 .env/
 
-# Data folder (if you don't want to track large datasets)
-data/
+# Model files and checkpoints
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.keras
+*.pkl
+*.npy
+*.npz
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
+# Saved models and generated data
+visiopath/src/image_enhancer/models/
+visiopath/src/image_enhancer/processed/
+visiopath/src/image_enhancer/uploads/
+visiopath/src/text_reconstructor/model/
+visiopath/src/text_reconstructor/processed/
+visiopath/src/text_reconstructor/uploads/
+visiopath/src/text_to_image/generated_images/
+
+# Sensitive auth/config files
+config.py
+*.env
+visiopath/src/text_to_image/authtoken.py
+
+# Misc
+project_structure.txt
