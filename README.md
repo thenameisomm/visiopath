@@ -100,23 +100,30 @@ HF_TOKEN=your_huggingface_api_token
 ```bash
 git clone https://github.com/thenameisomm/visiopath.git
 cd visiopath
+```
 
 🧪 2. Create Virtual Environment
 
+```bash
 python -m venv venv
 source venv/bin/activate     # On Windows: venv\Scripts\activate
+```
+
 
 📦 3. Install Dependencies
-
+```bash
 pip install -r requirements.txt
+```
+
 
 🔐 4. Add Your .env File
 
 Add API keys as shown in the Environment Setup section above.
 
 🚀 5. Run the App
-
+```bash
 python app.py
+```
 
 🌐 Visit http://localhost:5000 in your browser.
 
