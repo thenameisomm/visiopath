@@ -1,140 +1,156 @@
-✨ VISIOPATH — Intelligent Document & Visual Processing System
+<p align="center">
+  <img src="https://img.shields.io/badge/AI%20Toolkit-VISIOPATH-purple?style=for-the-badge&logo=python" alt="VISIOPATH Badge" />
+</p>
 
-An AI-powered web app that enhances images, reconstructs text, and generates visuals from language — all in one platform.
+
+<h1 align="center">✨ VISIOPATH</h1>
+<p align="center"><i>Intelligent AI-Powered Platform for Image Enhancement, Text Reconstruction, and Text-to-Image Generation</i></p>
+
 
 
 ⸻
 
 🚀 Overview
 
-VISIOPATH is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks. It seamlessly combines three intelligent features — Image Enhancement, Text Reconstruction, and Text-to-Image Generation — into a single intuitive web platform. Whether you’re restoring photos, decoding damaged documents, or generating art from prompts, VISIOPATH delivers high-quality results backed by AI APIs.
+VISIOPATH is a modular AI web application built with Flask, integrating multiple intelligent features into a seamless and user-friendly experience:
+	•	🖼️ AI-powered Image Enhancer
+	•	📄 Text Reconstructor for noisy or partial text
+	•	🎨 Text-to-Image Generator for creative prompts
 
-<hr/>
+Whether you’re restoring photos, decoding faded documents, or bringing ideas to life through visuals — VISIOPATH is your all-in-one solution.
 
+⸻
 
 🧠 Features
 
 🖼️ Image Enhancer
 
-⚠️ Currently powered by Hugging Face API — ImgGen.ai temporarily unavailable
+⚠️ Currently powered by Hugging Face API — ImgGen.ai is temporarily unavailable
 
 	•	Enhance low-resolution or blurry images (e.g., scanned documents, old photos).
-	•	Uses ESRGAN AI model for high-quality upscaling.
-	•	Clean UI with before-after image slider and instant download.
+	•	Uses Real-ESRGAN AI model for sharp upscaling.
+	•	Clean UI with a before-after slider + download option.
 
 📄 Text Reconstructor
-	•	Upload scanned or degraded images containing text.
-	•	Reconstructs and completes partial or faded content.
-	•	Outputs a clean .txt file with the corrected and recovered text.
+	•	Upload noisy, incomplete, or faded text images.
+	•	Uses deep learning models to reconstruct missing characters.
+	•	Result provided as a downloadable .txt file.
 
 🎨 Text-to-Image Generator
-	•	Convert text prompts (e.g., “A castle on the moon”) into vivid AI-generated images.
-	•	Powered by Together AI’s image generation models.
-	•	Supports multiple use cases: creative, commercial, or fun.
+	•	Generate stunning images from text prompts (e.g., “a sunset over a mountain temple”).
+	•	Powered by Together AI text-to-image models.
+	•	Great for storytelling, art, and education.
 
-<hr/>
-
+⸻
 
 🛠 Tech Stack
 
-Layer	Tools Used
+Layer	Technologies
 🎨 Frontend	HTML, CSS, JavaScript
-🧠 Backend	Python, Flask
-🤖 AI APIs	Hugging Face, Together AI
-🗂️ Utility	dotenv, requests, Pillow
+⚙️ Backend	Python, Flask
+🧠 AI Models	Hugging Face, Together AI
+🗂️ Utilities	dotenv, requests, Pillow
 
-<hr/>
 
+⸻
 
 📁 Project Structure
 
 visiopath/
-├── app.py                 # Main Flask application
-├── .env                   # Environment variables (not pushed to GitHub)
-├── requirements.txt       # Python dependency list
-├── templates/             # HTML templates for rendering modules
-├── static/                # CSS, JS, image assets
-├── src/
-│   ├── image_enhancer/    # Image enhancer logic + uploads folder
-│   ├── text_reconstructor/ # Text OCR and fixer
-│   └── text_to_image/     # Prompt-to-image generator
+├── app.py                 → Main Flask application
+├── .env                  → API keys and secrets (ignored by Git)
+├── requirements.txt      → Python dependency list
+├── static/               → Images, stylesheets, JavaScript
+├── templates/            → HTML templates for all modules
+├── src/                  → Main module code
+│   ├── image_enhancer/   → AI-enhanced upscaler logic
+│   │   ├── uploads/      → Uploaded images
+│   │   ├── processed/    → Enhanced images
+│   │   └── image_enhancer.py
+│   ├── text_reconstructor/ → OCR + correction logic
+│   │   ├── uploads/      → Input files
+│   │   ├── processed/    → Output text files
+│   │   └── text_reconstructor.py
+│   └── text_to_image/    → Prompt-to-image generation logic
+│       └── text_to_image.py
 
-<hr/>
 
+⸻
 
 🔐 Environment Setup
 
-Create a .env file in the root project directory with the following keys:
+Create a .env file in your root directory:
 
-TOGETHER_API_KEY=your_together_ai_key_here
-# IMGGEN_API_KEY=your_imggen_key_here (ImgGen.ai currently unavailable)
-HF_TOKEN=your_huggingface_api_token_here
+TOGETHER_API_KEY=your_together_ai_key
+# IMGGEN_API_KEY=your_imggen_key (ImgGen.ai currently unavailable)
+HF_TOKEN=your_huggingface_api_token
 
-🔒 .env is secured using .gitignore and never pushed to GitHub.
+✅ This file is ignored by Git (thanks to .gitignore).
 
-<hr/>
+⸻
 
+💻 Getting Started
 
-💻 How to Run Locally
-
-1. Clone the repository
+1. Clone the Repository
 
 git clone https://github.com/yourusername/visiopath.git
 cd visiopath
 
-2. Create and activate a virtual environment
+2. Create Virtual Environment
 
 python -m venv venv
-source venv/bin/activate       # On Windows: venv\Scripts\activate
+source venv/bin/activate     # On Windows: venv\Scripts\activate
 
-3. Install the dependencies
+3. Install Dependencies
 
 pip install -r requirements.txt
 
-4. Add your API keys to .env file (as shown above)
+4. Add Your .env File
 
-5. Start the Flask app
+Add keys as shown above.
+
+5. Run the App
 
 python app.py
 
-Then open your browser and visit:
+Visit http://localhost:5000 in your browser.
 
-http://localhost:5000
+⸻
 
-<hr/>
+📸 Screenshots
 
+Image Enhancer	Text Reconstructor	Text-to-Image
+		
 
-📸 Screenshots (Optional)
+(Optional — Replace paths with your actual UI screenshots)
 
-Add visual examples for each module below:
-	•	✅ Image Enhancer UI with before-after result
-	•	✅ Text-to-Image module with generated artwork
-	•	✅ Text Reconstructor showing input/output example
+⸻
 
-<hr/>
+🤝 Contributing
 
+Got suggestions, ideas, or improvements? Contributions are welcome!
+	1.	Fork the repo
+	2.	Create a new branch
+	3.	Make your changes
+	4.	Submit a pull request
 
-🙌 Contributing
-
-Have suggestions, improvements, or ideas? Fork the repo and open a pull request. Collaboration is welcome!
-
-<hr/>
-
+⸻
 
 ⚖️ License
 
-MIT License — you’re free to use, modify, and distribute this project.
+This project is licensed under the MIT License.
 
-<hr/>
+⸻
 
-
-🧠 Acknowledgements
+🙏 Acknowledgements
 	•	🤖 Replicate / Real-ESRGAN
 	•	🧬 Hugging Face
 	•	🎨 Together AI
 	•	💻 Flask
 
-<hr/>
+⸻
 
 
-Made with 💜 by Om Badgujar
+<p align="center">
+  Made with ❤️ by <strong>Om Badgujar</strong>
+</p>
