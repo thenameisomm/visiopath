@@ -2,60 +2,61 @@
   <img src="https://img.shields.io/badge/AI%20Toolkit-VISIOPATH-purple?style=for-the-badge&logo=python" alt="VISIOPATH Badge" />
 </p>
 
-
 <h1 align="center">✨ VISIOPATH</h1>
 <p align="center"><i>Intelligent AI-Powered Platform for Image Enhancement, Text Reconstruction, and Text-to-Image Generation</i></p>
 
-
-
 ⸻
 
-🚀 Overview
+## 🚀 Overview
 
 VISIOPATH is a modular AI web application built with Flask, integrating multiple intelligent features into a seamless and user-friendly experience:
-	•	🖼️ AI-powered Image Enhancer
-	•	📄 Text Reconstructor for noisy or partial text
-	•	🎨 Text-to-Image Generator for creative prompts
+
+- 🖼️ **AI-powered Image Enhancer**
+- 📄 **Text Reconstructor** for noisy or partial text
+- 🎨 **Text-to-Image Generator** for creative prompts
 
 Whether you’re restoring photos, decoding faded documents, or bringing ideas to life through visuals — VISIOPATH is your all-in-one solution.
 
 ⸻
 
-🧠 Features
+## 🧠 Features
 
-🖼️ Image Enhancer
+### 🖼️ **Image Enhancer**
 
-⚠️ Currently powered by Hugging Face API — ImgGen.ai is temporarily unavailable
+⚠️ *Currently powered by Hugging Face API — ImgGen.ai is temporarily unavailable*
 
-	•	Enhance low-resolution or blurry images (e.g., scanned documents, old photos).
-	•	Uses Real-ESRGAN AI model for sharp upscaling.
-	•	Clean UI with a before-after slider + download option.
+- Enhance low-resolution or blurry images (e.g., scanned documents, old photos).
+- Uses **Real-ESRGAN AI model** for sharp upscaling.
+- Clean UI with a **before-after slider** + download option.
 
-📄 Text Reconstructor
-	•	Upload noisy, incomplete, or faded text images.
-	•	Uses deep learning models to reconstruct missing characters.
-	•	Result provided as a downloadable .txt file.
+### 📄 **Text Reconstructor**
 
-🎨 Text-to-Image Generator
-	•	Generate stunning images from text prompts (e.g., “a sunset over a mountain temple”).
-	•	Powered by Together AI text-to-image models.
-	•	Great for storytelling, art, and education.
+- Upload noisy, incomplete, or faded text images.
+- Uses **deep learning models** to reconstruct missing characters.
+- Result provided as a downloadable **.txt** file.
 
-⸻
+### 🎨 **Text-to-Image Generator**
 
-🛠 Tech Stack
-
-Layer	Technologies
-🎨 Frontend	HTML, CSS, JavaScript
-⚙️ Backend	Python, Flask
-🧠 AI Models	Hugging Face, Together AI
-🗂️ Utilities	dotenv, requests, Pillow
-
+- Generate stunning images from text prompts (e.g., “a sunset over a mountain temple”).
+- Powered by **Together AI** text-to-image models.
+- Great for storytelling, art, and education.
 
 ⸻
 
-📁 Project Structure
+## 🛠 Tech Stack
 
+| Layer             | Technologies                |
+|-------------------|-----------------------------|
+| 🎨 **Frontend**    | HTML, CSS, JavaScript       |
+| ⚙️ **Backend**     | Python, Flask               |
+| 🧠 **AI Models**   | Hugging Face, Together AI   |
+| 🗂️ **Utilities**  | dotenv, requests, Pillow    |
+
+⸻
+
+## 📁 Project Structure
+
+```bash
 visiopath/
 ├── app.py                 → Main Flask application
 ├── .env                  → API keys and secrets (ignored by Git)
@@ -74,7 +75,6 @@ visiopath/
 │   └── text_to_image/    → Prompt-to-image generation logic
 │       └── text_to_image.py
 
-
 ⸻
 
 🔐 Environment Setup
@@ -85,44 +85,33 @@ TOGETHER_API_KEY=your_together_ai_key
 # IMGGEN_API_KEY=your_imggen_key (ImgGen.ai currently unavailable)
 HF_TOKEN=your_huggingface_api_token
 
-✅ This file is ignored by Git (thanks to .gitignore).
+✅ Note: This file is ignored by Git (thanks to .gitignore).
 
 ⸻
 
 💻 Getting Started
+	1.	Clone the Repository
 
-1. Clone the Repository
-
-git clone https://github.com/yourusername/visiopath.git
+git clone https://github.com/thenameisomm/visiopath.git
 cd visiopath
 
-2. Create Virtual Environment
+	2.	Create Virtual Environment
 
 python -m venv venv
 source venv/bin/activate     # On Windows: venv\Scripts\activate
 
-3. Install Dependencies
+	3.	Install Dependencies
 
 pip install -r requirements.txt
 
-4. Add Your .env File
+	4.	Add Your .env File
 
 Add keys as shown above.
-
-5. Run the App
+	5.	Run the App
 
 python app.py
 
 Visit http://localhost:5000 in your browser.
-
-⸻
-
-📸 Screenshots
-
-Image Enhancer	Text Reconstructor	Text-to-Image
-		
-
-(Optional — Replace paths with your actual UI screenshots)
 
 ⸻
 
@@ -150,7 +139,7 @@ This project is licensed under the MIT License.
 
 ⸻
 
-
 <p align="center">
   Made with ❤️ by <strong>Om Badgujar</strong>
 </p>
+```
