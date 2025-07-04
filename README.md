@@ -76,14 +76,17 @@ visiopath/
 │       └── text_to_image.py
 
 ⸻
+```
 
 🔐 Environment Setup
 
 Create a .env file in your root directory:
 
+```bash
 TOGETHER_API_KEY=your_together_ai_key
 # IMGGEN_API_KEY=your_imggen_key (ImgGen.ai currently unavailable)
 HF_TOKEN=your_huggingface_api_token
+```
 
 ✅ Note: This file is ignored by Git (thanks to .gitignore).
 
@@ -91,25 +94,29 @@ HF_TOKEN=your_huggingface_api_token
 
 💻 Getting Started
 	1.	Clone the Repository
-
+```bash
 git clone https://github.com/thenameisomm/visiopath.git
 cd visiopath
+```
 
 	2.	Create Virtual Environment
-
+```bash
 python -m venv venv
 source venv/bin/activate     # On Windows: venv\Scripts\activate
+```
 
 	3.	Install Dependencies
-
+```bash
 pip install -r requirements.txt
+```
 
 	4.	Add Your .env File
-
 Add keys as shown above.
-	5.	Run the App
 
+	5.	Run the App
+```bash
 python app.py
+```
 
 Visit http://localhost:5000 in your browser.
 
@@ -142,4 +149,3 @@ This project is licensed under the MIT License.
 <p align="center">
   Made with ❤️ by <strong>Om Badgujar</strong>
 </p>
-```
