@@ -7,10 +7,7 @@ An AI-powered web app that enhances images, reconstructs text, and generates vis
 
 🚀 Overview
 
-VISIOPATH is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks. It combines:
-	•	🖼️ Image Enhancement (AI upscale)
-	•	📄 Text Reconstruction (OCR + reconstruction)
-	•	🎨 Text-to-Image Generation (prompt to image)
+VISIOPATH is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks. It seamlessly combines three intelligent features — Image Enhancement, Text Reconstruction, and Text-to-Image Generation — into a single intuitive web platform. Whether you’re restoring photos, decoding damaged documents, or generating art from prompts, VISIOPATH delivers high-quality results backed by AI APIs.
 
 ⸻
 
@@ -20,29 +17,29 @@ VISIOPATH is a powerful multi-module AI application built with Flask, designed f
 
 ⚠️ Currently powered by Hugging Face API — ImgGen.ai temporarily unavailable
 
-	•	Upload any low-resolution image (e.g., scanned document, old photo)
-	•	Upscales image using ESRGAN AI model
-	•	Clean before-after slider with instant download
+	•	Enhance low-resolution or blurry images (e.g., scanned documents, old photos).
+	•	Uses ESRGAN AI model for high-quality upscaling.
+	•	Clean UI with before-after image slider and instant download.
 
 📄 Text Reconstructor
-	•	Upload scanned or noisy text image (handwritten or printed)
-	•	Reconstructs and corrects missing or faded parts
-	•	Downloads final output as .txt file
+	•	Upload scanned or degraded images containing text.
+	•	Reconstructs and completes partial or faded content.
+	•	Outputs a clean .txt file with the corrected and recovered text.
 
 🎨 Text-to-Image Generator
-	•	Input a natural language description
-	•	Generates images via Together AI models
-	•	Get shareable, high-quality visual content from simple text
+	•	Convert text prompts (e.g., “A castle on the moon”) into vivid AI-generated images.
+	•	Powered by Together AI’s image generation models.
+	•	Supports multiple use cases: creative, commercial, or fun.
 
 ⸻
 
 🛠 Tech Stack
 
 Layer	Tools Used
-🎨 Frontend	HTML, CSS, JS (vanilla + slider effect)
-🧠 Backend	Flask (Python)
+🎨 Frontend	HTML, CSS, JavaScript
+🧠 Backend	Python, Flask
 🤖 AI APIs	Hugging Face, Together AI
-🗂️ Others	dotenv, requests, Pillow
+🗂️ Utility	dotenv, requests, Pillow
 
 
 ⸻
@@ -50,81 +47,87 @@ Layer	Tools Used
 📁 Project Structure
 
 visiopath/
-├── app.py                  # Main Flask app with routing
-├── .env                   # Environment vars (not tracked)
-├── requirements.txt       # Python dependencies
-├── templates/             # HTML templates for each module
-├── static/                # CSS, images, JS
+├── app.py                  # Main Flask application
+├── .env                   # Environment variables (not pushed to GitHub)
+├── requirements.txt       # Python dependency list
+├── templates/             # HTML templates for rendering modules
+├── static/                # CSS, JS, image assets
 ├── src/
-│   ├── image_enhancer/    # ESRGAN logic, uploads, processed
-│   ├── text_reconstructor/ # OCR & text rebuild logic
-│   └── text_to_image/     # Together AI image generation
+│   ├── image_enhancer/    # Image enhancer logic + uploads folder
+│   ├── text_reconstructor/ # Text OCR and fixer
+│   └── text_to_image/     # Prompt-to-image generator
 
 
 ⸻
 
 🔐 Environment Setup
 
-Create a .env file in the root directory:
+Create a .env file in the root project directory with the following keys:
 
-TOGETHER_API_KEY=your_together_ai_key
-# IMGGEN_API_KEY=your_imggen_key (ImgGen.ai currently unavailable)
-HF_TOKEN=your_huggingface_api_token
+TOGETHER_API_KEY=your_together_ai_key_here
+# IMGGEN_API_KEY=your_imggen_key_here (ImgGen.ai currently unavailable)
+HF_TOKEN=your_huggingface_api_token_here
 
-🔒 This file is private. It is ignored by Git.
+🔒 .env is secured using .gitignore and never pushed to GitHub.
 
 ⸻
 
-💻 How to Run It Locally
+💻 How to Run Locally
 
 1. Clone the repository
 
 git clone https://github.com/yourusername/visiopath.git
 cd visiopath
 
-2. Create a virtual environment and install dependencies
+2. Create and activate a virtual environment
 
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate       # On Windows: venv\Scripts\activate
+
+3. Install the dependencies
+
 pip install -r requirements.txt
 
-3. Add your .env file (see format above)
+4. Add your API keys to .env file (as shown above)
 
-4. Run the app
+5. Start the Flask app
 
 python app.py
 
-🚀 Visit http://localhost:5000 in your browser.
+Then open your browser and visit:
+
+http://localhost:5000
+
 
 ⸻
 
-📸 Screenshots
+📸 Screenshots (Optional)
 
-Add module-wise screenshots below (optional):
-	•	Image Enhancer with before-after slider ✅
-	•	Text-to-Image preview result ✅
-	•	Text Reconstructor UI ✅
+Add visual examples for each module below:
+	•	✅ Image Enhancer UI with before-after result
+	•	✅ Text-to-Image module with generated artwork
+	•	✅ Text Reconstructor showing input/output example
 
 ⸻
 
 🙌 Contributing
 
-Pull requests welcome! Suggestions? Open an issue. 🛠️
+Have suggestions, improvements, or ideas? Fork the repo and open a pull request. Collaboration is welcome!
 
 ⸻
 
 ⚖️ License
 
-MIT — free to use, modify, and share.
+MIT License — you’re free to use, modify, and distribute this project.
 
 ⸻
 
-🧠 Credits & Acknowledgements
-	•	🤖 Replicate / ESRGAN
+🧠 Acknowledgements
+	•	🤖 Replicate / Real-ESRGAN
 	•	🧬 Hugging Face
 	•	🎨 Together AI
 	•	💻 Flask
 
 ⸻
 
-Crafted with 💜 by Om Badgujar
+Made with 💜 by Om Badgujar
