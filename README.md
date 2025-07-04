@@ -9,7 +9,8 @@ An AI-powered web app that enhances images, reconstructs text, and generates vis
 
 VISIOPATH is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks. It seamlessly combines three intelligent features — Image Enhancement, Text Reconstruction, and Text-to-Image Generation — into a single intuitive web platform. Whether you’re restoring photos, decoding damaged documents, or generating art from prompts, VISIOPATH delivers high-quality results backed by AI APIs.
 
-⸻
+<hr/>
+
 
 🧠 Features
 
@@ -31,7 +32,8 @@ VISIOPATH is a powerful multi-module AI application built with Flask, designed f
 	•	Powered by Together AI’s image generation models.
 	•	Supports multiple use cases: creative, commercial, or fun.
 
-⸻
+<hr/>
+
 
 🛠 Tech Stack
 
@@ -41,13 +43,13 @@ Layer	Tools Used
 🤖 AI APIs	Hugging Face, Together AI
 🗂️ Utility	dotenv, requests, Pillow
 
+<hr/>
 
-⸻
 
 📁 Project Structure
 
 visiopath/
-├── app.py                  # Main Flask application
+├── app.py                 # Main Flask application
 ├── .env                   # Environment variables (not pushed to GitHub)
 ├── requirements.txt       # Python dependency list
 ├── templates/             # HTML templates for rendering modules
@@ -57,8 +59,8 @@ visiopath/
 │   ├── text_reconstructor/ # Text OCR and fixer
 │   └── text_to_image/     # Prompt-to-image generator
 
+<hr/>
 
-⸻
 
 🔐 Environment Setup
 
@@ -70,7 +72,8 @@ HF_TOKEN=your_huggingface_api_token_here
 
 🔒 .env is secured using .gitignore and never pushed to GitHub.
 
-⸻
+<hr/>
+
 
 💻 How to Run Locally
 
@@ -98,8 +101,8 @@ Then open your browser and visit:
 
 http://localhost:5000
 
+<hr/>
 
-⸻
 
 📸 Screenshots (Optional)
 
@@ -108,19 +111,22 @@ Add visual examples for each module below:
 	•	✅ Text-to-Image module with generated artwork
 	•	✅ Text Reconstructor showing input/output example
 
-⸻
+<hr/>
+
 
 🙌 Contributing
 
 Have suggestions, improvements, or ideas? Fork the repo and open a pull request. Collaboration is welcome!
 
-⸻
+<hr/>
+
 
 ⚖️ License
 
 MIT License — you’re free to use, modify, and distribute this project.
 
-⸻
+<hr/>
+
 
 🧠 Acknowledgements
 	•	🤖 Replicate / Real-ESRGAN
@@ -128,6 +134,7 @@ MIT License — you’re free to use, modify, and distribute this project.
 	•	🎨 Together AI
 	•	💻 Flask
 
-⸻
+<hr/>
+
 
 Made with 💜 by Om Badgujar
