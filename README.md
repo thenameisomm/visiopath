@@ -1,63 +1,56 @@
-'''markdown
+✨ VISIOPATH — Intelligent Document & Visual Processing System
 
-# ✨ VISIOPATH — Intelligent Document & Visual Processing System
+An AI-powered web app that enhances images, reconstructs text, and generates visuals from language — all in one platform.
 
-> An AI-powered web app that enhances images, reconstructs text, and generates visuals from language — all in one platform.
 
-![VISIOPATH Banner](https://img.shields.io/badge/AI%20Toolkit-VISIOPATH-purple?style=for-the-badge\&logo=python)
+⸻
 
----
+🚀 Overview
 
-## 🚀 Overview
-
-**VISIOPATH** is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks.
+VISIOPATH is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks.
 
 🔍 It combines:
+	•	🖼️ Image Enhancement (AI upscale)
+	•	📄 Text Reconstruction (OCR + reconstruction)
+	•	🎨 Text-to-Image Generation (prompt to image)
 
-* **🖼️ Image Enhancement** (AI upscale)
-* **📄 Text Reconstruction** (OCR + reconstruction)
-* **🎨 Text-to-Image Generation** (prompt to image)
+⸻
 
----
+🧠 Features
 
-## 🧬 Features
+🖼️ Image Enhancer
 
-### 🖼️ Image Enhancer
+⚠️ Currently powered by Hugging Face API — ImgGen.ai temporarily unavailable
 
-> ⚠️ Currently powered by **Hugging Face API** — **ImgGen.ai temporarily unavailable**
+	•	Upload any low-resolution image (e.g., scanned document, old photo)
+	•	Upscales image using ESRGAN AI model
+	•	Clean before-after slider with instant download
 
-* Upload any low-resolution image (e.g., scanned document, old photo)
-* Upscales image using **ESRGAN AI model**
-* Clean before-after slider with instant download
+📄 Text Reconstructor
+	•	Upload scanned or noisy text image (handwritten or printed)
+	•	Reconstructs and corrects missing or faded parts
+	•	Downloads final output as .txt file
 
-### 📄 Text Reconstructor
+🎨 Text-to-Image Generator
+	•	Input a natural language description
+	•	Generates images via Together AI models
+	•	Get shareable, high-quality visual content from simple text
 
-* Upload scanned or noisy text image (handwritten or printed)
-* Reconstructs and corrects missing or faded parts
-* Downloads final output as `.txt` file
+⸻
 
-### 🎨 Text-to-Image Generator
+🛠 Tech Stack
 
-* Input a natural language description
-* Generates images via **Together AI** models
-* Get shareable, high-quality visual content from simple text
+Layer	Tools Used
+🎨 Frontend	HTML, CSS, JS (vanilla + slider effect)
+🧠 Backend	Flask (Python)
+🤖 AI APIs	Hugging Face, Together AI
+🗂️ Others	dotenv, requests, Pillow
 
----
 
-## 🧰 Tech Stack
+⸻
 
-| Layer       | Tools Used                              |
-| ----------- | --------------------------------------- |
-| 🎨 Frontend | HTML, CSS, JS (vanilla + slider effect) |
-| 🧠 Backend  | Flask (Python)                          |
-| 🤖 AI APIs  | Hugging Face, Together AI               |
-| 🗂️ Others  | dotenv, requests, Pillow                |
+📁 Project Structure
 
----
-
-## 🗂️ Project Structure
-
-```bash
 visiopath/
 ├── app.py                  # Main Flask app with routing
 ├── .env                   # Environment vars (not tracked)
@@ -68,83 +61,72 @@ visiopath/
 │   ├── image_enhancer/    # ESRGAN logic, uploads, processed
 │   ├── text_reconstructor/ # OCR & text rebuild logic
 │   └── text_to_image/     # Together AI image generation
-```
 
----
 
-## 🔐 Environment Setup
+⸻
 
-Create a `.env` file in the root directory:
+🔐 Environment Setup
 
-```env
+Create a .env file in the root directory:
+
 TOGETHER_API_KEY=your_together_ai_key
 # IMGGEN_API_KEY=your_imggen_key (ImgGen.ai currently unavailable)
 HF_TOKEN=your_huggingface_api_token
-```
 
-> 🔒 This file is private. It is **ignored by Git**.
+🔒 This file is private. It is ignored by Git.
 
----
+⸻
 
-## 💻 How to Run It Locally
+💻 How to Run It Locally
 
-### 1. Clone the repository
+1. Clone the repository
 
-```bash
 git clone https://github.com/yourusername/visiopath.git
 cd visiopath
-```
 
-### 2. Create a virtual environment and install dependencies
+2. Create a virtual environment and install dependencies
 
-```bash
 python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-### 3. Add your `.env` file (see format above)
+3. Add your .env file (see format above)
 
-### 4. Run the app
+4. Run the app
 
-```bash
 python app.py
-```
 
-🚀 Visit `http://localhost:5000` in your browser.
+🚀 Visit http://localhost:5000 in your browser.
 
----
+⸻
 
-## 📸 Screenshots
+📸 Screenshots
 
-*Add module-wise screenshots below (optional):*
+Add module-wise screenshots below (optional):
+	•	Image Enhancer with before-after slider ✅
+	•	Text-to-Image preview result ✅
+	•	Text Reconstructor UI ✅
 
-* Image Enhancer with before-after slider ✅
-* Text-to-Image preview result ✅
-* Text Reconstructor UI ✅
+⸻
 
----
+🙌 Contributing
 
-## 🙌 Contributing
+Pull requests welcome! Suggestions? Open an issue. 🛠️
 
-Pull requests welcome! Suggestions? Open an issue. 🚰️
+⸻
 
----
+⚖️ License
 
-## ⚖️ License
+MIT — free to use, modify, and share.
 
-[MIT](https://choosealicense.com/licenses/mit/) — free to use, modify, and share.
+⸻
 
----
+🧠 Credits & Acknowledgements
+	•	🤖 Replicate / ESRGAN
+	•	🧬 Hugging Face
+	•	🎨 Together AI
+	•	💻 Flask
 
-## 🧠 Credits & Acknowledgements
+⸻
 
-* 🤖 [Replicate / ESRGAN](https://replicate.com/xinntao/real-esrgan)
-* 🧬 [Hugging Face](https://huggingface.co)
-* 🎨 [Together AI](https://together.ai)
-* 💻 [Flask](https://flask.palletsprojects.com/)
-
----
-
-> Crafted with 💜 by **Om Badgujar**
-> '''
+Crafted with 💜 by Om Badgujar
