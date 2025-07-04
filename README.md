@@ -7,9 +7,7 @@ An AI-powered web app that enhances images, reconstructs text, and generates vis
 
 🚀 Overview
 
-VISIOPATH is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks.
-
-🔍 It combines:
+VISIOPATH is a powerful multi-module AI application built with Flask, designed for real-world use cases in document enhancement and AI-based vision tasks. It combines:
 	•	🖼️ Image Enhancement (AI upscale)
 	•	📄 Text Reconstruction (OCR + reconstruction)
 	•	🎨 Text-to-Image Generation (prompt to image)
